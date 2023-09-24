@@ -2,7 +2,7 @@
 
 import { Fragment } from "react";
 import Link from "next/link";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import { Popover, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 
@@ -25,8 +25,8 @@ export default function Navigation() {
                 <a>
                   <span className="sr-only">Your Company</span>
                   <Image
-                    width={100}
-                    height={100}
+                    width={60}
+                    height={60}
                     alt="Your Company"
                     className="h-8 w-auto sm:h-10"
                     src="/logo.jpg"

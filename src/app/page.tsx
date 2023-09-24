@@ -1,12 +1,7 @@
 import type { Metadata } from "next";
-import Image from "next/image";
+import Image from "next/legacy/image";
 import Link from "next/link";
 import Navigation from "../components/Navigation";
-
-export const metadata: Metadata = {
-  title: "Personal App - Fred Hong",
-  description: "Personal App - Fred Hong",
-};
 
 const navigation = [
   { name: "Blogs", href: "/blogs" },

@@ -17,17 +17,15 @@ export default function Navigation() {
         >
           <div className="flex flex-shrink-0 flex-grow items-center lg:flex-grow-0">
             <div className="flex w-full items-center justify-between md:w-auto">
-              <Link legacyBehavior href="/">
-                <a>
-                  <span className="sr-only">Your Company</span>
-                  <Image
-                    width={60}
-                    height={60}
-                    alt="Your Company"
-                    className="h-8 w-auto sm:h-10"
-                    src="/logo.jpg"
-                  />
-                </a>
+              <Link href="/">
+                <span className="sr-only">Your Company</span>
+                <Image
+                  width={60}
+                  height={60}
+                  alt="Your Company"
+                  className="h-8 w-auto sm:h-10"
+                  src="/logo.jpg"
+                />
               </Link>
               <div className="-mr-2 flex items-center md:hidden">
                 <Popover.Button className="inline-flex items-center justify-center rounded-md bg-white p-2 text-gray-400 hover:bg-gray-100 hover:text-gray-500 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-indigo-500">
@@ -39,10 +37,12 @@ export default function Navigation() {
           </div>
           <div className="hidden md:ml-10 md:block md:space-x-8 md:pr-4">
             {navigationItems.map((item) => (
-              <Link legacyBehavior key={item.name} href={item.href}>
-                <a className="font-medium text-gray-500 hover:text-gray-900">
-                  {item.name}
-                </a>
+              <Link
+                key={item.name}
+                href={item.href}
+                className="font-medium text-gray-500 hover:text-gray-900"
+              >
+                {item.name}
               </Link>
             ))}
           </div>
@@ -83,20 +83,22 @@ export default function Navigation() {
             </div>
             <div className="space-y-1 px-2 pt-2 pb-3">
               {navigationItems.map((item) => (
-                <Link legacyBehavior key={item.name} href={item.href}>
-                  <a className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">
-                    {item.name}
-                  </a>
+                <Link
+                  key={item.name}
+                  href={item.href}
+                  className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900"
+                >
+                  {item.name}
                 </Link>
               ))}
             </div>
             <div className="px-4">{/* Search Input Component */}</div>
-            <a
+            <Link
               href="#"
               className="block w-full bg-gray-50 px-5 py-3 text-center font-medium text-indigo-600 hover:bg-gray-100"
             >
               Log in
-            </a>
+            </Link>
           </div>
         </Popover.Panel>
       </Transition>

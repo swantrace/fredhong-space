@@ -23,17 +23,18 @@ const Footer = () => {
         >
           {navigationItems.map((item) => (
             <div key={item.name} className="px-5 py-2">
-              <Link legacyBehavior href={item.href}>
-                <a className="text-base text-gray-400 hover:text-gray-500">
-                  {item.name}
-                </a>
+              <Link
+                href={item.href}
+                className="text-base text-gray-400 hover:text-gray-500"
+              >
+                {item.name}
               </Link>
             </div>
           ))}
         </nav>
         <div className="mt-8 flex justify-center space-x-6">
           {socialLinks.map((item) => (
-            <a
+            <Link
               rel="noreferrer"
               target="_blank"
               key={item.name}
@@ -42,7 +43,7 @@ const Footer = () => {
             >
               <span className="sr-only">{item.name}</span>
               <item.icon className="h-6 w-6" aria-hidden="true" />
-            </a>
+            </Link>
           ))}
         </div>
         <p className="mt-8 text-center text-base text-gray-400">

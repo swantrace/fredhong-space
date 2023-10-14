@@ -5,11 +5,7 @@ import Link from "next/link";
 import Image from "next/legacy/image";
 import { Popover, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
-
-const navigation = [
-  { name: "Blogs", href: "/blogs" },
-  { name: "Portfolio", href: "/portfolios" },
-];
+import { navigationItems } from "../lib/data";
 
 export default function Navigation() {
   return (
@@ -42,7 +38,7 @@ export default function Navigation() {
             </div>
           </div>
           <div className="hidden md:ml-10 md:block md:space-x-8 md:pr-4">
-            {navigation.map((item) => (
+            {navigationItems.map((item) => (
               <Link legacyBehavior key={item.name} href={item.href}>
                 <a className="font-medium text-gray-500 hover:text-gray-900">
                   {item.name}
@@ -86,7 +82,7 @@ export default function Navigation() {
               </div>
             </div>
             <div className="space-y-1 px-2 pt-2 pb-3">
-              {navigation.map((item) => (
+              {navigationItems.map((item) => (
                 <Link legacyBehavior key={item.name} href={item.href}>
                   <a className="block rounded-md px-3 py-2 text-base font-medium text-gray-700 hover:bg-gray-50 hover:text-gray-900">
                     {item.name}

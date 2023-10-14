@@ -1,4 +1,4 @@
-import Image from "next/legacy/image";
+import Image from "next/image";
 import Link from "next/link";
 
 const BlogItem = ({
@@ -17,9 +17,9 @@ const BlogItem = ({
         <Link href={`/blogs/${blog.slug}`}>
           <div className="relative h-80 aspect-w-1 aspect-h-1 w-full rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-40">
             <Image
-              priority
-              layout="fill"
-              objectFit="cover"
+              priority={true}
+              fill={true}
+              style={{ objectFit: "cover" }}
               src={blog.coverImage}
               className="rounded-lg hover:cursor-pointer"
               alt={""}

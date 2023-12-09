@@ -7,7 +7,7 @@ const BlogItem = ({
   blog: {
     slug: string;
     title: string;
-    description: string;
+    summary: string;
     coverImage: string;
   };
 }) => {
@@ -33,7 +33,7 @@ const BlogItem = ({
             <span aria-hidden="true" className="inset-0" />
             {blog.title}
           </h3>
-          <p className="mt-1 text-sm text-gray-500">{blog.description}</p>
+          <p className="mt-1 text-sm text-gray-500">{blog.summary}</p>
         </div>
       </div>
       <Link

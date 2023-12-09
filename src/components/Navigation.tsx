@@ -6,6 +6,7 @@ import Image from "next/image";
 import { Popover, Transition } from "@headlessui/react";
 import { Bars3Icon, XMarkIcon } from "@heroicons/react/24/solid";
 import { navigationItems } from "../lib/data";
+import SearchBox from "./SearchBox";
 
 export default function Navigation() {
   return (
@@ -35,7 +36,7 @@ export default function Navigation() {
               </div>
             </div>
           </div>
-          <div className="hidden md:ml-10 md:block md:space-x-8 md:pr-4">
+          <div className="hidden md:ml-10 md:block md:space-x-8 md:pr-8">
             {navigationItems.map((item) => (
               <Link
                 key={item.name}
@@ -46,7 +47,9 @@ export default function Navigation() {
               </Link>
             ))}
           </div>
-          <div className="hidden md:block">{/* Search Input Component */}</div>
+          <div className="hidden md:block">
+            <SearchBox />
+          </div>
         </nav>
       </div>
 
@@ -92,7 +95,9 @@ export default function Navigation() {
                 </Link>
               ))}
             </div>
-            <div className="px-4">{/* Search Input Component */}</div>
+            <div className="px-4">
+              <SearchBox />
+            </div>
             <Link
               href="#"
               className="block w-full bg-gray-50 px-5 py-3 text-center font-medium text-indigo-600 hover:bg-gray-100"

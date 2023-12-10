@@ -1,3 +1,5 @@
+"use client";
+
 import ProjectItem from "./ProjectItem";
 import { type Project } from "../lib/md";
 

@@ -1,3 +1,5 @@
+"use client";
+
 import BlogItem from "./BlogItem";
 import { type Blog } from "../lib/md";
 

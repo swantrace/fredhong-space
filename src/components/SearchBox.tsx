@@ -1,14 +1,61 @@
+import Link from "next/link";
 import { MagnifyingGlassIcon } from "@heroicons/react/24/solid";
-import { type ChangeEvent, useState } from "react";
+import {
+  type ChangeEvent,
+  useEffect,
+  useRef,
+  useState,
+  useCallback,
+} from "react";
 import contentIndexer, { type SearchContent } from "../lib/contentIndexer";
 
 const SearchBox = () => {
+  const searchInputRef = useRef<HTMLInputElement | null>(null);
   const [searchResults, setSearchResults] = useState<SearchContent[]>([]);
+  const [searchTerm, setSearchTerm] = useState("");
+
+  const clearSearch = useCallback(() => {
+    setSearchResults([]);
+    setSearchTerm("");
+  }, []);
+
+  const handleKeyDown = useCallback(
+    (event: KeyboardEvent) => {
+      if (event.key === "Escape") {
+        clearSearch();
+      }
+    },
+    [clearSearch]
+  );
+
+  const handleClickOutside = useCallback(
+    (event: MouseEvent) => {
+      console.log("event.target", event.target);
+      if (
+        searchInputRef.current &&
+        !searchInputRef.current.contains(event.target as Element)
+      ) {
+        clearSearch();
+      }
+    },
+    [clearSearch]
+  );
+
+  useEffect(() => {
+    document.addEventListener("keydown", handleKeyDown);
+    document.addEventListener("click", handleClickOutside);
+
+    return () => {
+      document.removeEventListener("keydown", handleKeyDown);
+      document.removeEventListener("click", handleClickOutside);
+    };
+  }, [handleKeyDown, handleClickOutside]);
 
   const performSearch = (event: ChangeEvent<HTMLInputElement>) => {
     const value = event.target.value;
     const results = contentIndexer.search(value);
     setSearchResults(results);
+    setSearchTerm(value);
   };
 
   return (
@@ -24,6 +71,8 @@ const SearchBox = () => {
           />
         </div>
         <input
+          ref={searchInputRef}
+          value={searchTerm}
           id="search-input"
           autoComplete="off"
           type="text"
@@ -39,15 +88,19 @@ const SearchBox = () => {
         >
           {searchResults.map((result) => (
             <li
-              onClick={() => {}}
-              className={`hover:bg-indigo-600 hover:text-white p-3 relative cursor-pointer`}
+              className={`hover:bg-indigo-600 hover:text-white p-3 relative cursor-pointer search-result-item`}
               key={result.slug}
             >
-              <div className="font-bold text-sm truncate">{result.title}</div>
-              <p className="truncate text-sm">{result.summary}</p>
-              <span className="mt-2 text-xs text-white bg-gray-800 px-2 py-1 rounded-xl">
-                {result.category}
-              </span>
+              <Link
+                href={`/${result.category}/${result.slug}`}
+                className="block w-full h-full"
+              >
+                <div className="font-bold text-sm truncate">{result.title}</div>
+                <p className="truncate text-sm">{result.summary}</p>
+                <span className="mt-2 text-xs text-white bg-gray-800 px-2 py-1 rounded-xl">
+                  {result.category}
+                </span>
+              </Link>
             </li>
           ))}
         </ul>

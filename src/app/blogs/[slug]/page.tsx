@@ -1,5 +1,5 @@
 import MarkDown from "@/components/components/MarkDown";
-import { getBlogBySlug } from "@/components/lib/md";
+import { getBlogBySlug, getBlogs } from "@/components/lib/md";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import type { Metadata, ResolvingMetadata } from "next";
@@ -7,6 +7,13 @@ import type { Metadata, ResolvingMetadata } from "next";
 type Props = {
   params: { slug: string };
 };
+
+export async function generateStaticParams() {
+  const blogs = await getBlogs();
+  return blogs.map((blog) => ({
+    slug: blog.slug,
+  }));
+}
 
 export async function generateMetadata(
   { params: { slug } }: Props,

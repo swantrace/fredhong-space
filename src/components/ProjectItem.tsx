@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { shortify } from "../lib/utils";
 
 const ProjectItem = ({
   project,
@@ -26,10 +27,12 @@ const ProjectItem = ({
       <h3 className="mt-6 text-sm text-gray-500">
         <Link href={`/projects/${project.slug}`}>
           <span className="absolute inset-0" />
-          {project.title}
+          {shortify(project.title)}
         </Link>
       </h3>
-      <p className="text-base font-semibold text-gray-900">{project.summary}</p>
+      <p className="text-base font-semibold text-gray-900">
+        {shortify(project.summary)}
+      </p>
     </div>
   );
 };

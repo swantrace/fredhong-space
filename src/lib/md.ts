@@ -122,3 +122,7 @@ export const getProjects = async () => {
   }
   return projects;
 };
+
+export const getProjectBySlug = async (slug: string) => {
+  return await getItemContent<Project>(PROJECT_PATH, `${slug}.md`);
+};

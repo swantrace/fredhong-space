@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { shortify } from "../lib/utils";
 
 const BlogItem = ({
   blog,
@@ -33,9 +34,9 @@ const BlogItem = ({
         <div>
           <h3 className="text-sm text-gray-700 font-bold">
             <span aria-hidden="true" className="inset-0" />
-            {blog.title}
+            {shortify(blog.title)}
           </h3>
-          <p className="mt-1 text-sm text-gray-500">{blog.summary}</p>
+          <p className="mt-1 text-sm text-gray-500">{shortify(blog.summary)}</p>
         </div>
       </div>
       <Link

@@ -20,4 +20,12 @@ const filterItemsBy = (category: string, tags: string[]) => {
   };
 };
 
-export { sortItemsBy, filterItemsBy };
+const shortify = (text: string, maxLength = 50) => {
+  if (text.length <= maxLength) {
+    return text;
+  }
+
+  return text.substring(0, maxLength) + " ...";
+};
+
+export { sortItemsBy, filterItemsBy, shortify };

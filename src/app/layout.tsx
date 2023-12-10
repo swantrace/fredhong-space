@@ -3,6 +3,9 @@ import Footer from "../components/Footer";
 import "./globals.css";
 
 const inter = Inter({ subsets: ["latin"] });
+export const metadata = {
+  metadataBase: new URL(process.env.ORIGIN || "https://fredhong.space"),
+};
 
 export default function RootLayout({
   children,

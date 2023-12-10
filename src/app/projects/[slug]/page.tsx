@@ -1,5 +1,5 @@
 import MarkDown from "@/components/components/MarkDown";
-import { getBlogBySlug, getBlogs } from "@/components/lib/md";
+import { getProjectBySlug, getProjects } from "@/components/lib/md";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import type { Metadata, ResolvingMetadata } from "next";
@@ -9,9 +9,9 @@ type Props = {
 };
 
 export async function generateStaticParams() {
-  const blogs = await getBlogs();
-  return blogs.map((blog) => ({
-    slug: blog.slug,
+  const projects = await getProjects();
+  return projects.map((project) => ({
+    slug: project.slug,
   }));
 }
 
@@ -19,13 +19,13 @@ export async function generateMetadata(
   { params: { slug } }: Props,
   parent: ResolvingMetadata
 ): Promise<Metadata> {
-  const blog = await getBlogBySlug(slug);
+  const project = await getProjectBySlug(slug);
   const previousImages = (await parent).openGraph?.images || [];
   return {
-    title: blog?.title ?? "Fred Hong - Personal Website",
+    title: project?.title ?? "Fred Hong - Personal Website",
     openGraph: {
       images: [
-        blog?.coverImage ?? "/default-cover-image.jpg",
+        project?.coverImage ?? "/default-cover-image.jpg",
         ...previousImages,
       ],
     },
@@ -37,66 +37,62 @@ export default async function BlogDetail({
 }: {
   params: { slug: string };
 }) {
-  const blog = await getBlogBySlug(slug);
+  const project = await getProjectBySlug(slug);
 
-  console.log(blog?.content ?? "");
-
-  if (!blog) {
-    redirect("/blogs");
+  if (!project) {
+    redirect("/projects");
   }
 
   return (
-    <div className="w-2/3 m-auto">
-      {/* Blog Header Starts */}
-      <div className="blog-detail-header">
-        <div className="flex flex-row justify-between mb-2">
-          <div className="flex items-center">
-            <div className="flex-shrink-0">
-              <a href="#">
-                <span className="sr-only">{blog.author}</span>
-                <div className="relative h-10 w-10 !mb-0">
-                  <Image
-                    priority={true}
-                    fill={true}
-                    style={{ objectFit: "cover" }}
-                    className="rounded-full"
-                    src={blog.authorImage ?? "/default-author-image.jpg"}
-                    alt=""
-                  />
-                </div>
-              </a>
-            </div>
-            <div className="ml-3">
-              <p className="text-sm font-medium text-gray-900 !mb-0">
-                <a href="#" className="hover:underline">
-                  {blog.author}
-                </a>
-              </p>
-              <div className="flex space-x-1 text-sm text-gray-500">
-                <time dateTime={blog.date}>{blog.date ?? "2023-10-15"}</time>
-              </div>
-            </div>
-          </div>
-          <div className="flex self-end">{/* Social Links Here */}</div>
+    <div className="pt-6">
+      <div className="mx-auto max-w-2xl px-4 pt-10 pb-16 sm:px-6 lg:grid lg:max-w-7xl lg:grid-cols-3 lg:grid-rows-[auto,auto,1fr] lg:gap-x-8 lg:px-8 lg:pt-16 lg:pb-24">
+        <div className="lg:col-span-2 lg:border-r lg:border-gray-200 lg:pr-8">
+          <h1 className="text-2xl font-bold tracking-tight text-gray-900 sm:text-3xl">
+            {project.title}
+          </h1>
         </div>
-        <h1 className="font-bold text-4xl mb-1">{blog.title}</h1>
-        <h2 className="blog-detail-header-subtitle mb-2 text-xl text-gray-600">
-          {blog.summary}
-        </h2>
-        <div className="h-96 bg-black mx-auto w-full relative">
+        <div className="mt-4 lg:row-span-3 lg:mt-0 relative">
           <Image
-            priority={true}
-            fill={true}
-            style={{ objectFit: "cover" }}
-            src={blog.coverImage ?? "/default-cover-image.jpg"}
+            layout="fill"
+            className="h-56 w-full object-cover sm:h-72 md:h-96 lg:h-full lg:w-full"
             alt=""
+            src={project.coverImage}
           />
         </div>
+
+        <div className="py-10 lg:col-span-2 lg:col-start-1 lg:border-r lg:border-gray-200 lg:pt-6 lg:pb-16 lg:pr-8">
+          <div>
+            <h3 className="sr-only">Description</h3>
+
+            <div className="space-y-6">
+              <p className="text-base text-gray-900">{project.summary}</p>
+            </div>
+          </div>
+
+          <div className="mt-10">
+            <h3 className="text-sm font-medium text-gray-900">Highlights</h3>
+
+            <div className="mt-4">
+              <ul role="list" className="list-disc space-y-2 pl-4 text-sm">
+                {project.highlights.map((highlight) => (
+                  <li key={highlight} className="text-gray-400">
+                    <span className="text-gray-600">{highlight}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          <div className="mt-10">
+            <h2 className="text-sm font-medium text-gray-900">Details</h2>
+            <div className="mt-4 space-y-6">
+              <article className="text-sm text-gray-600">
+                <MarkDown>{project.content}</MarkDown>
+              </article>
+            </div>
+          </div>
+        </div>
       </div>
-      {/* Blog Header Ends */}
-      <article className="prose lg:prose-lg markdown-image-50">
-        <MarkDown>{blog.content}</MarkDown>
-      </article>
     </div>
   );
 }

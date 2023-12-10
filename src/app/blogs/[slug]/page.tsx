@@ -39,8 +39,6 @@ export default async function BlogDetail({
 }) {
   const blog = await getBlogBySlug(slug);
 
-  console.log(blog?.content ?? "");
-
   if (!blog) {
     redirect("/blogs");
   }

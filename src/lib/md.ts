@@ -19,7 +19,10 @@ export interface Blog extends MarkDownItem {
 }
 
 export interface Project extends MarkDownItem {
-  employmentDate: string;
+  employee: string;
+  employmentTime: number;
+  employeeImage: string;
+  highlights: string[];
 }
 
 export interface SearchContent {

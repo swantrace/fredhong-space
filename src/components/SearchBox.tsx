@@ -30,7 +30,6 @@ const SearchBox = () => {
 
   const handleClickOutside = useCallback(
     (event: MouseEvent) => {
-      console.log("event.target", event.target);
       if (
         searchInputRef.current &&
         !searchInputRef.current.contains(event.target as Element)

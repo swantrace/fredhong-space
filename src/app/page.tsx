@@ -40,7 +40,14 @@ export default async function Home() {
             (See All)
           </Link>
         </h2>
-        <BlogList blogs={blogs} />
+        <BlogList
+          blogs={blogs}
+          amount={4}
+          sortKey="date"
+          reverse={true}
+          category="blogs"
+          tags={[]}
+        />
         <br></br>
         <h2 className="text-2xl font-bold tracking-tight text-gray-900">
           Projects
@@ -48,7 +55,14 @@ export default async function Home() {
             (See All)
           </Link>
         </h2>
-        <ProjectList projects={projects} />
+        <ProjectList
+          projects={projects}
+          amount={4}
+          sortKey="date"
+          reverse={true}
+          category="projects"
+          tags={[]}
+        />
       </div>
     </>
   );

@@ -4,7 +4,8 @@ summary: Learn programming in JS language, HTML, and CSS. Create a Web Applicati
 author: Filip Jerga
 authorImage: https://thrangra.sirv.com/Course_logo%20copy.jpg
 coverImage: https://thrangra.sirv.com/Course_logo%20copy.jpg
-date: "2021-05-25"
+date: "2023-05-25"
+category: "blogs"
 ---
 
 **What is Javascript?**

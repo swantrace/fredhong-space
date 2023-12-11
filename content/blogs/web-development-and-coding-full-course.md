@@ -6,6 +6,7 @@ authorImage: https://thrangra.sirv.com/Course_logo%20copy.jpg
 coverImage: https://thrangra.sirv.com/Course_logo%20copy.jpg
 date: "2023-05-25"
 category: "blogs"
+email: "filip_jerga@gmail.com"
 ---
 
 **What is Javascript?**

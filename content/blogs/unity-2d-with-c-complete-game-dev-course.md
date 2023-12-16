@@ -1,12 +1,12 @@
 ---
 title: Unity 2D With C# - Complete Game Dev Course
 summary: Create the complete 2D survival game in Unity with C#. Learn best practices and patterns.
-author: Filip Jerga
+author: Danni Zhang
 authorImage: https://thrangra.sirv.com/Final_Unity_2D_Small.jpg
 coverImage: https://thrangra.sirv.com/Final_Unity_2D_Small.jpg
 date: "2022-01-25"
 category: "blogs"
-email: "filip_jerga@gmail.com"
+email: "zdn.zhang@gmail.com"
 ---
 
 **What is Unity?**

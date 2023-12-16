@@ -6,6 +6,8 @@ import { shortify } from "../lib/utils";
 
 const BlogItem = ({
   blog,
+  style,
+  edit,
 }: {
   blog: {
     slug: string;
@@ -13,11 +15,16 @@ const BlogItem = ({
     summary: string;
     coverImage: string;
   };
+  style: "grid" | "list";
+  edit: boolean;
 }) => {
-  return (
+  const blogLink = edit
+    ? `dashboard/blogs/${blog.slug}`
+    : `/blogs/${blog.slug}`;
+  return style === "grid" ? (
     <div className="group">
       <div className="h-80 aspect-w-1 aspect-h-1 w-full rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-40">
-        <Link href={`/blogs/${blog.slug}`}>
+        <Link href={blogLink}>
           <div className="relative h-80 aspect-w-1 aspect-h-1 w-full rounded-md bg-gray-200 group-hover:opacity-75 lg:aspect-none lg:h-40">
             <Image
               priority={true}
@@ -39,13 +46,21 @@ const BlogItem = ({
           <p className="mt-1 text-sm text-gray-500">{shortify(blog.summary)}</p>
         </div>
       </div>
-      <Link
-        href={`/blogs/${blog.slug}`}
-        className="text-sm font-bold text-gray-700"
-      >
+      <Link href={blogLink} className="text-sm font-bold text-gray-700">
         Read More
       </Link>
     </div>
+  ) : (
+    <li className="mb-5">
+      <Link href={blogLink}>
+        <p className="text-base font-medium text-indigo-600 truncate">
+          {blog.title}
+        </p>
+        <p className="mt-2 flex items-center text-sm text-gray-500">
+          {blog.summary}
+        </p>
+      </Link>
+    </li>
   );
 };
 

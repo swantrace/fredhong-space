@@ -7,7 +7,7 @@ export default async function Blogs() {
   return (
     <>
       <h2 className="text-2xl font-bold tracking-tight text-gray-900">
-        All Projects
+        All Posts
       </h2>
       <BlogList
         blogs={blogs}

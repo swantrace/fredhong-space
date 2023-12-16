@@ -8,6 +8,7 @@ export interface MarkDownItem {
   slug: string;
   content: string;
   summary: string;
+  email: string;
   coverImage: string;
   date?: string;
   category?: string;

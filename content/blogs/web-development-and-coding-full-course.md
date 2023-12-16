@@ -1,12 +1,12 @@
 ---
 title: Web Development & Code 101 - Full Guide [2022]
 summary: Learn programming in JS language, HTML, and CSS. Create a Web Application made in React JS. The path to the final project includes many assignments, code exercises, and challenges.
-author: Filip Jerga
+author: Danni Zhang
 authorImage: https://thrangra.sirv.com/Course_logo%20copy.jpg
 coverImage: https://thrangra.sirv.com/Course_logo%20copy.jpg
 date: "2023-05-25"
 category: "blogs"
-email: "filip_jerga@gmail.com"
+email: "zdn.zhang@gmail.com"
 ---
 
 **What is Javascript?**

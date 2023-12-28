@@ -1,5 +1,5 @@
-import MarkDown from "@/components/components/MarkDown";
-import { getProjectBySlug, getProjects } from "@/components/lib/md";
+import MarkDown from "@/components/MarkDown";
+import { getProjectBySlug, getProjects } from "@/lib/md";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import type { Metadata, ResolvingMetadata } from "next";

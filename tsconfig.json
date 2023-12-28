@@ -1,6 +1,6 @@
 {
   "compilerOptions": {
-    "target": "es5",
+    "target": "ESNext",
     "lib": [
       "dom",
       "dom.iterable",
@@ -24,8 +24,14 @@
     ],
     "paths": {
       "@/components/*": [
-        "./src/*"
-      ]
+        "./src/components/*"
+      ],
+      "@/*": [
+        "./src/app/*"
+      ],
+      "@/lib/*": [
+        "./src/lib/*"
+      ],
     }
   },
   "include": [

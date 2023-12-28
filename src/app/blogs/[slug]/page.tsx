@@ -1,8 +1,9 @@
-import MarkDown from "@/components/components/MarkDown";
-import { getBlogBySlug, getBlogs } from "@/components/lib/md";
+import MarkDown from "@/components/MarkDown";
+import { getBlogBySlug, getBlogs } from "@/lib/md";
 import Image from "next/image";
 import { redirect } from "next/navigation";
 import type { Metadata, ResolvingMetadata } from "next";
+import prisma from "@/lib/db";
 
 type Props = {
   params: { slug: string };
@@ -38,7 +39,8 @@ export default async function BlogDetail({
   params: { slug: string };
 }) {
   const blog = await getBlogBySlug(slug);
-
+  const posts = await prisma.post.findMany();
+  console.log(posts);
   if (!blog) {
     redirect("/blogs");
   }

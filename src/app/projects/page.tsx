@@ -1,4 +1,4 @@
-import ProjectList from "@/components/components/ProjectList";
+import ProjectList from "@/components/ProjectList";
 import { getProjects } from "../../lib/md";
 
 export default async function Projects() {

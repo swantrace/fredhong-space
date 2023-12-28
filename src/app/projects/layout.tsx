@@ -1,4 +1,4 @@
-import NavigationBar from "@/components/components/NavigationBar";
+import NavigationBar from "@/components/NavigationBar";
 import { type ReactNode } from "react";
 
 export default function BlogLayout({ children }: { children: ReactNode }) {

@@ -1,4 +1,4 @@
-import BlogList from "@/components/components/BlogList";
+import BlogList from "@/components/BlogList";
 import { getBlogs } from "../../lib/md";
 
 export default async function Blogs() {

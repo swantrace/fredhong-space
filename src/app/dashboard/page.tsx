@@ -2,12 +2,14 @@ import { redirect } from "next/navigation";
 import { auth } from "../../lib/auth";
 import React from "react";
 import { getBlogs, getProjects } from "../../lib/md";
-import BlogList from "@/components/components/BlogList";
-import ProjectList from "@/components/components/ProjectList";
+import BlogList from "@/components/BlogList";
+import ProjectList from "@/components/ProjectList";
 
 const DashboardHome = async () => {
   const session = await auth();
-  if (!session) {
+  console.log("session: ", session);
+  console.log("session.user", session?.user);
+  if (!session?.user) {
     redirect("/api/auth/signin");
   }
   const email = session.user!.email;
